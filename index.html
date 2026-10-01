@@ -2,167 +2,190 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Peer Exchange — Check Before You Use</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
+<div class="app">
 
-  <div class="meta">AAI-E-MC1-S03-COMM01 · Community Activity · 0.25 hrs · Practical · Gates the unit</div>
-  <h1>Peer Exchange — Check Before You Use</h1>
-  <p class="subtitle">Exchange one checked AI note with a buddy. Review each other's marking, give feedback, and revise — then swap and do it again.</p>
-
-  <!-- INTRO -->
-  <section class="active" data-step="intro">
-    <h2>How this works</h2>
-    <ul class="numbered">
-      <li><span class="n">1</span><span>Exchange one checked note with your buddy — the AI version and your corrected version, side by side.</span></li>
-      <li><span class="n">2</span><span>Review each other's marking against a short rubric. Give one strength, one risk, one suggestion.</span></li>
-      <li><span class="n">3</span><span>Revise your note, then swap roles and run it again.</span></li>
-    </ul>
-    <p class="note-line">You will need a buddy and one checked note between you. The whole activity takes about 15 minutes.</p>
-    <button class="btn" onclick="goTo('roles')">Start</button>
-  </section>
-
-  <!-- STEP: roles -->
-  <section data-step="roles">
-    <p class="step-meta">Step 1</p>
-    <h2>Who goes first?</h2>
-    <p>Decide with your buddy who plays Owner first. You'll both play both roles before you finish.</p>
-    <div class="radio-row">
-      <label><input type="radio" name="firstOwner" value="me" checked> I'm the Owner first</label>
-      <label><input type="radio" name="firstOwner" value="buddy"> My buddy is the Owner first</label>
+  <header class="saa-header">
+    <div class="saa-brand">
+      <img src="assets/logo-mark.png" alt="">
+      <span>SWIFT AI ACADEMY</span>
     </div>
-    <p class="note-line">Owner shares the note. Reviewer checks it against the rubric. You swap for round 2.</p>
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('intro')">Back</button>
-      <button class="btn" onclick="goTo('exchange')">Next</button>
+    <div class="saa-header-actions">
+      <button type="button" class="saa-icon-btn" aria-label="Course outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+      </button>
+      <button type="button" class="saa-ghost-pill" aria-label="Close activity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        Close
+      </button>
     </div>
-  </section>
+  </header>
 
-  <!-- STEP: exchange -->
-  <section data-step="exchange">
-    <p class="step-meta">Step 2</p>
-    <h2>Exchange the note</h2>
-    <p>Pick the setting closer to your own — ITI or higher education.</p>
-    <select id="laneSelect" onchange="renderArtifact()">
-      <option value="iti">ITI · Industrial visit note</option>
-      <option value="higher">Higher education · Campus survey summary</option>
-    </select>
+  <main class="stage">
 
-    <div id="artifactBlock"></div>
+    <!-- SLIDE 1: cover (old page head + intro note) -->
+    <section class="active slide-cover" data-step="cover">
+      <p class="saa-eyebrow">Community Activity · 0.25 hrs · Practical · Gates the unit</p>
+      <div class="meta">AAI-E-MC1-S03-COMM01</div>
+      <h1>Peer Exchange — Check Before You Use</h1>
+      <p class="subtitle">Exchange one checked AI note with a buddy. Review each other's marking, give feedback, and revise — then swap and do it again.</p>
+      <p class="note-line">You will need a buddy and one checked note between you. The whole activity takes about 15 minutes.</p>
+      <p class="pc-meta">Swift AI Academy · PC 4.1–4.5 · PC 5.1–5.4 · English</p>
+    </section>
 
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('roles')">Back</button>
-      <button class="btn" onclick="goTo('review')">Next</button>
-    </div>
-  </section>
+    <!-- SLIDE 2: how this works (old intro) -->
+    <section data-step="intro" data-next="Start">
+      <h2>How this works</h2>
+      <ul class="numbered">
+        <li><span class="n saa-num">1</span><span>Exchange one checked note with your buddy — the AI version and your corrected version, side by side.</span></li>
+        <li><span class="n saa-num">2</span><span>Review each other's marking against a short rubric. Give one strength, one risk, one suggestion.</span></li>
+        <li><span class="n saa-num">3</span><span>Revise your note, then swap roles and run it again.</span></li>
+      </ul>
+    </section>
 
-  <!-- STEP: review -->
-  <section data-step="review">
-    <p class="step-meta">Step 3</p>
-    <h2>Review against the rubric</h2>
-    <p>As Reviewer, check off what you actually see in your buddy's note.</p>
-    <ul class="checklist">
-      <li><input type="checkbox"><span>Every fact, figure, date, name and source in the AI draft is marked.</span></li>
-      <li><input type="checkbox"><span>Each correction is supported by a record, clearly qualified, or removed — not guessed.</span></li>
-      <li><input type="checkbox"><span>The corrected version reads clearly, with no confusing leftover wording.</span></li>
-      <li><input type="checkbox"><span>At least one genuine change happened because of this review.</span></li>
-    </ul>
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('exchange')">Back</button>
-      <button class="btn" onclick="goTo('feedback')">Next</button>
-    </div>
-  </section>
+    <!-- SLIDE 3: step 1, roles -->
+    <section data-step="roles">
+      <p class="step-meta">Step 1</p>
+      <h2>Who goes first?</h2>
+      <p>Decide with your buddy who plays Owner first. You'll both play both roles before you finish.</p>
+      <div class="radio-row">
+        <label><input type="radio" name="firstOwner" value="me" checked> I'm the Owner first</label>
+        <label><input type="radio" name="firstOwner" value="buddy"> My buddy is the Owner first</label>
+      </div>
+      <p class="note-line">Owner shares the note. Reviewer checks it against the rubric. You swap for round 2.</p>
+    </section>
 
-  <!-- STEP: feedback -->
-  <section data-step="feedback">
-    <p class="step-meta">Step 4</p>
-    <h2>Give feedback</h2>
-    <label for="fStrength">One strength (with evidence)</label>
-    <textarea id="fStrength" placeholder="e.g., The date was checked against the visit register and corrected."></textarea>
+    <!-- SLIDE 4: step 2, pick the setting -->
+    <section data-step="exchange">
+      <p class="step-meta">Step 2</p>
+      <h2>Exchange the note</h2>
+      <p>Pick the setting closer to your own — ITI or higher education.</p>
+      <select id="laneSelect" onchange="renderArtifact()" aria-label="Setting">
+        <option value="iti">ITI · Industrial visit note</option>
+        <option value="higher">Higher education · Campus survey summary</option>
+      </select>
+    </section>
 
-    <label for="fRisk">One risk</label>
-    <textarea id="fRisk" placeholder="e.g., The source line was corrected, but the wording is still a little unclear."></textarea>
+    <!-- SLIDE 5: step 2, AI version (old side-by-side, part 1) -->
+    <section data-step="exchange-ai">
+      <p class="step-meta">Step 2 · <span class="lane-name">ITI · Industrial visit note</span></p>
+      <h2>AI version</h2>
+      <blockquote id="artifactAI"><div class="label">AI version</div><p></p></blockquote>
+    </section>
 
-    <label for="fChange">One suggested change</label>
-    <textarea id="fChange" placeholder="e.g., Try qualifying that line instead of removing it completely."></textarea>
+    <!-- SLIDE 6: step 2, owner's corrected version (old side-by-side, part 2) -->
+    <section data-step="exchange-fixed">
+      <p class="step-meta">Step 2 · <span class="lane-name">ITI · Industrial visit note</span></p>
+      <h2>Owner's corrected version</h2>
+      <blockquote class="owner" id="artifactFixed"><div class="label">Owner’s corrected version</div><p></p></blockquote>
+    </section>
 
-    <p class="note-line" style="margin-top:16px;">If you disagree, say it plainly:</p>
-    <blockquote><div class="label">Reviewer</div><p>"I see this differently because ___."</p></blockquote>
-    <blockquote class="owner"><div class="label">Owner</div><p>"That's fair, I'll recheck it." — or — "I kept this because ___."</p></blockquote>
+    <!-- SLIDE 7: step 3, rubric -->
+    <section data-step="review">
+      <p class="step-meta">Step 3</p>
+      <h2>Review against the rubric</h2>
+      <p>As Reviewer, check off what you actually see in your buddy's note.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" id="rb1"><label for="rb1">Every fact, figure, date, name and source in the AI draft is marked.</label></li>
+        <li><input type="checkbox" id="rb2"><label for="rb2">Each correction is supported by a record, clearly qualified, or removed — not guessed.</label></li>
+        <li><input type="checkbox" id="rb3"><label for="rb3">The corrected version reads clearly, with no confusing leftover wording.</label></li>
+        <li><input type="checkbox" id="rb4"><label for="rb4">At least one genuine change happened because of this review.</label></li>
+      </ul>
+    </section>
 
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('review')">Back</button>
-      <button class="btn" onclick="goTo('revise')">Next</button>
-    </div>
-  </section>
+    <!-- SLIDE 8: step 4, feedback fields -->
+    <section data-step="feedback">
+      <p class="step-meta">Step 4</p>
+      <h2>Give feedback</h2>
+      <label for="fStrength">One strength (with evidence)</label>
+      <textarea id="fStrength" placeholder="e.g., The date was checked against the visit register and corrected."></textarea>
 
-  <!-- STEP: revise (timer) -->
-  <section data-step="revise">
-    <p class="step-meta">Step 5</p>
-    <h2>Revise, on the clock</h2>
-    <p>Owner revises the note using the feedback just given. Run the timer for this phase, and the ones before it, if you haven't yet.</p>
+      <label for="fRisk">One risk</label>
+      <textarea id="fRisk" placeholder="e.g., The source line was corrected, but the wording is still a little unclear."></textarea>
 
-    <div class="timer-line">
-      <span class="timer-digits" id="timerDigits">02:00</span>
-      <span class="timer-phase" id="timerPhaseLabel">Revision</span>
-    </div>
-    <p class="timer-instruction" id="timerInstruction">Owner makes at least one change based on the feedback just received.</p>
-    <div class="btn-row" style="margin-top:0;">
-      <button class="btn ghost" onclick="toggleTimer()" id="timerBtn">Start</button>
-      <button class="back-link" onclick="nextPhase()">Skip to next phase</button>
-    </div>
+      <label for="fChange">One suggested change</label>
+      <textarea id="fChange" placeholder="e.g., Try qualifying that line instead of removing it completely."></textarea>
+    </section>
 
-    <label for="fChanged" style="margin-top:24px;">One change I made after peer review</label>
-    <input type="text" id="fChanged" placeholder="e.g., I qualified the attendance figure instead of stating it as fact.">
+    <!-- SLIDE 9: step 4, sentence frames -->
+    <section data-step="disagree">
+      <p class="step-meta">Step 4</p>
+      <h2>Sentence frames</h2>
+      <p class="note-line">If you disagree, say it plainly:</p>
+      <blockquote><div class="label">Reviewer</div><p>"I see this differently because ___."</p></blockquote>
+      <blockquote class="owner"><div class="label">Owner</div><p>"That's fair, I'll recheck it." — or — "I kept this because ___."</p></blockquote>
+    </section>
 
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('feedback')">Back</button>
-      <button class="btn" onclick="goTo('reflect')">Next</button>
-    </div>
-  </section>
+    <!-- SLIDE 10: step 5, revise (timer) -->
+    <section data-step="revise">
+      <p class="step-meta">Step 5</p>
+      <h2>Revise, on the clock</h2>
+      <p>Owner revises the note using the feedback just given. Run the timer for this phase, and the ones before it, if you haven't yet.</p>
 
-  <!-- STEP: reflect -->
-  <section data-step="reflect">
-    <p class="step-meta">Step 6</p>
-    <h2>Swap and reflect</h2>
-    <p>Now swap roles — the Reviewer becomes the Owner — and run Steps 2 to 5 again for round 2.</p>
-    <label for="fReflect">What was different about receiving feedback, versus giving it?</label>
-    <textarea id="fReflect" placeholder="Write a line or two, in your own words."></textarea>
+      <div class="timer-box">
+        <div class="timer-line">
+          <span class="timer-digits" id="timerDigits">02:00</span>
+          <span class="timer-phase" id="timerPhaseLabel">Revision</span>
+        </div>
+        <p class="timer-instruction" id="timerInstruction">Owner makes at least one change based on the feedback just received.</p>
+        <div class="timer-ctrls">
+          <button class="btn ghost" onclick="toggleTimer()" id="timerBtn">Start</button>
+          <button class="back-link" onclick="nextPhase()">Skip to next phase</button>
+        </div>
+      </div>
 
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('revise')">Back</button>
-      <button class="btn" onclick="goTo('evidence')">Review & finish</button>
-    </div>
-  </section>
+      <label for="fChanged" class="after-timer">One change I made after peer review</label>
+      <input type="text" id="fChanged" placeholder="e.g., I qualified the attendance figure instead of stating it as fact.">
+    </section>
 
-  <!-- STEP: evidence -->
-  <section data-step="evidence">
-    <h2>Your evidence</h2>
-    <p>Check you have all of these, then download your answers.</p>
-    <ul class="checklist">
-      <li><input type="checkbox"><span>The AI note and your corrected version, side by side.</span></li>
-      <li><input type="checkbox"><span>One strength, one risk and one suggested change from your Reviewer.</span></li>
-      <li><input type="checkbox"><span>The one change you made after peer review.</span></li>
-      <li><input type="checkbox"><span>Round 2 completed, with roles swapped.</span></li>
-    </ul>
-    <div class="btn-row">
-      <button class="back-link" onclick="goTo('reflect')">Back</button>
+    <!-- SLIDE 11: step 6, swap and reflect -->
+    <section data-step="reflect" data-next="Review &amp; finish">
+      <p class="step-meta">Step 6</p>
+      <h2>Swap and reflect</h2>
+      <p>Now swap roles — the Reviewer becomes the Owner — and run Steps 2 to 5 again for round 2.</p>
+      <label for="fReflect">What was different about receiving feedback, versus giving it?</label>
+      <textarea id="fReflect" placeholder="Write a line or two, in your own words."></textarea>
+    </section>
+
+    <!-- SLIDE 12: evidence checklist -->
+    <section data-step="evidence">
+      <h2>Your evidence</h2>
+      <p>Check you have all of these, then download your answers.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" id="ev1"><label for="ev1">The AI note and your corrected version, side by side.</label></li>
+        <li><input type="checkbox" id="ev2"><label for="ev2">One strength, one risk and one suggested change from your Reviewer.</label></li>
+        <li><input type="checkbox" id="ev3"><label for="ev3">The one change you made after peer review.</label></li>
+        <li><input type="checkbox" id="ev4"><label for="ev4">Round 2 completed, with roles swapped.</label></li>
+      </ul>
+    </section>
+
+    <!-- SLIDE 13: download (old evidence step, lower half) -->
+    <section data-step="download" data-last>
+      <h2>Download your answers</h2>
       <button class="btn" onclick="downloadAnswers()">Download my answers</button>
-    </div>
-    <p class="reminder"><b>This page does not save your work.</b> Download it, or show your facilitator, before you close this tab.</p>
-    <p class="reminder">Never type real names, marks, phone numbers, addresses, health information or ID numbers into an AI tool. Use made-up details for practice.</p>
-    <div class="btn-row">
-      <button class="back-link" onclick="startOver()">Start over</button>
-    </div>
-  </section>
+      <p class="reminder"><b>This page does not save your work.</b> Download it, or show your facilitator, before you close this tab.</p>
+      <p class="reminder">Never type real names, marks, phone numbers, addresses, health information or ID numbers into an AI tool. Use made-up details for practice.</p>
+    </section>
 
-  <footer>Swift AI Academy · PC 4.1–4.5 · PC 5.1–5.4 · English</footer>
+  </main>
+
+  <footer class="deck-foot">
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <div class="foot-row">
+      <button type="button" class="back-link" id="navBack" onclick="goBack()">Back</button>
+      <span class="counter" id="counter" aria-live="polite">1 / 13</span>
+      <button type="button" class="btn" id="navNext" onclick="goNext()">Next</button>
+      <button type="button" class="back-link" id="navRestart" onclick="startOver()" hidden>Start over</button>
+    </div>
+  </footer>
+
 </div>
 
 <script src="script.js"></script>

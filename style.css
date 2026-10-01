@@ -1,93 +1,341 @@
+/* ==========================================================================
+   Swift AI Academy — module frame base (from handoff/tokens.css + screens/dark)
+   Paste at the TOP of each activity's style.css. Site-specific rules follow.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
 :root{
-    --bg:#F6F8FF; --navy:#0E1B5C; --royal:#3D5AFE; --gold:#FBB034; --border:#E2E6F2;
-    --muted:#6670A3;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--navy);
-    font-family:'Rubik', sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:640px;margin:0 auto;padding:56px 24px 90px;}
+  --font:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
 
-  .meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:14px;}
-  h1{font-size:28px;font-weight:800;margin:0 0 10px;letter-spacing:-.01em;}
-  .subtitle{font-size:15.5px;color:#3A4270;margin:0 0 36px;max-width:52ch;}
+  /* spacing (8px base) */
+  --sp-1:8px;--sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:40px;--sp-7:64px;
 
-  h2{font-size:20px;font-weight:800;margin:0 0 6px;}
-  .step-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--royal);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:6px;}
-  p{margin:0 0 14px;font-size:14.5px;color:#2B3466;}
+  /* surfaces */
+  --bg-0:#080D24; --bg-1:#0E1A4F; --bg-2:#0B1440;
+  --glass:rgba(255,255,255,0.035);
+  --glass-2:rgba(255,255,255,0.05);
+  --glass-3:rgba(255,255,255,0.08);
+  --line:rgba(255,255,255,0.10);
+  --line-2:rgba(255,255,255,0.14);
+  --line-soft:rgba(255,255,255,0.08);
 
-  /* how it works — plain numbered list, no icon badges */
-  .numbered{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:16px;}
-  .numbered li{display:flex;gap:14px;align-items:flex-start;}
-  .numbered .n{
-    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--royal);
-    width:26px;height:26px;border-radius:50%;border:1.5px solid var(--royal);
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  }
-  .numbered span{font-size:14.5px;color:#2B3466;padding-top:3px;}
+  /* text */
+  --ivory:#F6F4EF;        /* headings */
+  --text:#DCE1F2;         /* body copy */
+  --text-2:#D5DAEE;       /* option / input text */
+  --muted:#AEB6D4;        /* secondary */
+  --dim:#7C86AE;          /* captions, help, meta */
+  --faint:#5C6690;        /* footer meta, disabled */
 
-  .note-line{font-size:13px;color:var(--muted);margin:0 0 28px;}
+  /* brand */
+  --amber:#F3AB31; --amber-2:#FFC168; --amber-ink:#241300;
+  --amber-tint:rgba(243,171,49,0.08); --amber-line:rgba(243,171,49,0.22);
+  --blue:#5B76FF; --blue-light:#8FA0FF; --blue-pale:#B8C4FF;
+  --blue-tint:rgba(91,118,255,0.12); --blue-tint-2:rgba(91,118,255,0.16);
+  --blue-line:rgba(91,118,255,0.35); --blue-line-2:rgba(91,118,255,0.5);
 
-  section{display:none;}
-  section.active{display:block;animation:fade .25s ease;}
-  @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  /* feedback (dark-theme tonal) */
+  --ok:#4FE0A8; --ok-pale:#6EE7B7; --ok-tint:rgba(79,224,168,0.10); --ok-line:rgba(79,224,168,0.40);
+  --warn:#FFC168; --warn-tint:rgba(243,171,49,0.10); --warn-line:rgba(243,171,49,0.35);
+  --bad:#FF8A80; --bad-tint:rgba(255,107,107,0.10); --bad-line:rgba(255,107,107,0.40);
 
-  /* plain form elements — no card chrome */
-  label{display:block;font-weight:700;font-size:13.5px;margin:18px 0 6px;color:var(--navy);}
-  label:first-of-type{margin-top:0;}
-  input[type=text], input[type=date], textarea, select{
-    width:100%;font-family:'Rubik',sans-serif;font-size:14.5px;color:var(--navy);
-    border:none;border-bottom:1.5px solid var(--border);background:transparent;
-    padding:9px 2px;border-radius:0;
-  }
-  textarea{min-height:64px;resize:vertical;}
-  input:focus, textarea:focus, select:focus{outline:none;border-bottom-color:var(--royal);}
-  select{cursor:pointer;background:var(--bg);}
-  .radio-row{display:flex;gap:20px;margin:8px 0 4px;}
-  .radio-row label{display:flex;align-items:center;gap:7px;font-weight:600;font-size:14px;margin:0;cursor:pointer;}
-  .radio-row input{width:auto;accent-color:var(--royal);}
+  --radius-card:20px; --radius-field:10px; --radius-pill:999px;
+  --shadow-amber:0 8px 24px rgba(243,171,49,0.30);
+  --shadow-modal:0 40px 90px rgba(0,0,0,0.5);
+}
 
-  /* quoted artifact / sentence-frame blocks — plain, left border only */
-  blockquote{
-    margin:12px 0 18px;padding:4px 0 4px 16px;border-left:2.5px solid var(--border);
-  }
-  blockquote.owner{border-left-color:var(--royal);}
-  blockquote p{margin:0;font-size:14px;color:#2B3466;}
-  blockquote .label{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
-  .mark{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:2px;font-weight:600;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;
+  font-family:var(--font);font-size:15px;line-height:1.6;color:var(--text);
+  background:linear-gradient(150deg,var(--bg-0) 0%,var(--bg-1) 52%,var(--bg-2) 100%) fixed;
+  background-color:var(--bg-0);
+  -webkit-font-smoothing:antialiased;
+}
+/* ambient glow + grain, same recipe as the Reading/Prompt Card frames */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(circle at 88% 4%,rgba(60,89,246,0.22) 0%,rgba(60,89,246,0) 40%);
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:3px 3px;
+  mix-blend-mode:overlay;
+}
+body > *{position:relative;z-index:1}
 
-  /* plain checklist */
-  .checklist{list-style:none;margin:0 0 20px;padding:0;}
-  .checklist li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);}
-  .checklist li:last-child{border-bottom:none;}
-  .checklist input{width:17px;height:17px;accent-color:var(--royal);flex-shrink:0;margin-top:2px;}
-  .checklist span{font-size:14px;color:#2B3466;}
+h1,h2,h3,h4{font-family:var(--font);color:var(--ivory);font-weight:700;margin:0;line-height:1.2}
+p{margin:0}
+a{color:var(--blue-light)}
+strong,b{color:var(--ivory);font-weight:600}
+::selection{background:rgba(91,118,255,0.35);color:#fff}
 
-  /* timer — plain digits, no ring/gradient */
-  .timer-line{display:flex;align-items:baseline;gap:14px;margin:10px 0 6px;flex-wrap:wrap;}
-  .timer-digits{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--navy);}
-  .timer-phase{font-size:13px;color:var(--muted);font-weight:600;}
-  .timer-instruction{font-size:13.5px;color:#3A4270;margin:6px 0 18px;}
+/* ---------- header chrome (identical on every frame) ---------- */
+.saa-header{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);
+  padding:var(--sp-5) 0 var(--sp-4);
+}
+.saa-brand{display:flex;align-items:center;gap:var(--sp-2);text-decoration:none}
+.saa-brand img{width:20px;height:auto;display:block}
+.saa-brand span{font-size:11px;letter-spacing:.16em;color:#C6CDE6;font-weight:600;white-space:nowrap}
+.saa-header-actions{display:flex;align-items:center;gap:10px}
+.saa-icon-btn{
+  width:38px;height:38px;border-radius:50%;background:var(--glass-2);border:1px solid var(--line-2);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);padding:0;
+}
+.saa-icon-btn svg{width:15px;height:15px}
+.saa-ghost-pill{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--radius-pill);
+  background:var(--glass-2);border:1px solid var(--line-2);color:var(--muted);
+  font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;
+}
+.saa-ghost-pill svg{width:13px;height:13px}
 
-  /* buttons — text-first, one accent colour */
-  .btn{
-    font-family:'Rubik',sans-serif;font-weight:700;font-size:14.5px;
-    background:var(--royal);color:#fff;border:none;border-radius:8px;
-    padding:11px 22px;cursor:pointer;
-  }
-  .btn:hover{background:#2F46D6;}
-  .btn.ghost{background:transparent;color:var(--royal);border:1.5px solid var(--royal);}
-  .btn.ghost:hover{background:#EEF1FF;}
-  .btn:disabled{opacity:.4;cursor:default;}
-  .btn-row{display:flex;gap:10px;align-items:center;margin-top:22px;}
-  .back-link{font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;background:none;border:none;padding:0;font-family:'Rubik',sans-serif;}
+/* ---------- eyebrow: amber hairline + tracked caps ---------- */
+.saa-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600;
+}
+.saa-eyebrow::before{content:'';width:22px;height:1px;background:var(--amber);flex:0 0 auto}
+.saa-cap{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
 
-  .reminder{font-size:13px;color:var(--muted);margin:26px 0 0;padding-top:16px;border-top:1px solid var(--border);}
-  .reminder b{color:var(--navy);}
+/* ---------- glass card ---------- */
+.saa-card{
+  background:var(--glass);border:1px solid var(--line);border-radius:var(--radius-card);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:var(--sp-5) var(--sp-6);
+}
+.saa-divider{height:1px;background:var(--line-soft);border:0;margin:0}
 
-  footer{margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#AAB4E0;}
+/* ---------- buttons ---------- */
+/* PRIMARY = amber. ONE visible per screen, ever. */
+.saa-btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 24px;min-height:44px;border:none;border-radius:var(--radius-pill);cursor:pointer;
+  background:linear-gradient(135deg,var(--amber-2),var(--amber));color:var(--amber-ink);
+  font-family:var(--font);font-size:14px;font-weight:700;box-shadow:var(--shadow-amber);
+}
+.saa-btn-primary:disabled,.saa-btn-primary[aria-disabled="true"]{opacity:.4;cursor:not-allowed;box-shadow:none}
+/* SECONDARY = glass */
+.saa-btn-secondary{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;min-height:44px;border-radius:var(--radius-pill);cursor:pointer;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:#DADEEE;
+  font-family:var(--font);font-size:13px;font-weight:600;
+}
+/* TEXT LINK button = blue */
+.saa-btn-link{background:none;border:none;padding:8px 4px;color:var(--blue-light);font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--amber-2);outline-offset:2px;
+}
+
+/* ---------- chips / tabs ---------- */
+.saa-chip{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--blue-light);
+  background:var(--blue-tint);border:1px solid var(--blue-line);border-radius:var(--radius-pill);padding:8px 14px;
+  font-family:var(--font);cursor:pointer;
+}
+.saa-tabs{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:var(--radius-pill);padding:4px}
+.saa-tab{padding:8px 16px;border-radius:var(--radius-pill);color:var(--dim);font-size:12.5px;font-weight:600;background:none;border:none;cursor:pointer;font-family:var(--font)}
+.saa-tab.is-active,.saa-tab[aria-selected="true"]{background:var(--blue);color:#fff;font-weight:700}
+
+/* ---------- form fields ---------- */
+.saa-label{font-size:12.5px;font-weight:700;color:#EDEFF7}
+.saa-help{font-size:11.5px;color:#8089AC}
+.saa-input,input[type=text],input[type=email],input:not([type]),textarea,select{
+  width:100%;padding:11px 14px;border-radius:var(--radius-field);
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);color:var(--text-2);
+  font-family:var(--font);font-size:14px;line-height:1.5;
+}
+input::placeholder,textarea::placeholder{color:#5C6690}
+input:focus,textarea:focus,select:focus{border-color:var(--blue-line-2);background:rgba(91,118,255,0.06);outline:none}
+
+/* ---------- option rows (quiz) ---------- */
+.saa-option{
+  width:100%;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;
+  padding:14px 18px;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid var(--line);
+  color:var(--text-2);font-family:var(--font);font-size:14.5px;
+}
+.saa-option.is-selected{background:rgba(243,171,49,0.10);border-color:var(--amber);color:var(--ivory);font-weight:600}
+
+/* ---------- callouts ---------- */
+.saa-callout{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-radius:12px;background:var(--amber-tint);border:1px solid var(--amber-line);color:var(--ivory);font-size:14px;line-height:1.55}
+.saa-callout-blue{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-radius:14px;background:rgba(91,118,255,0.08);border:1px solid rgba(91,118,255,0.28);color:var(--ivory)}
+
+/* ---------- numbered step marker ---------- */
+.saa-num{width:30px;height:30px;border-radius:50%;background:var(--blue-tint-2);border:1px solid var(--blue-line-2);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:13px;font-weight:800;color:var(--blue-pale)}
+
+/* ---------- progress bars (footer pattern) ---------- */
+.saa-dots{display:flex;align-items:center;gap:8px}
+.saa-dots > *{width:10px;height:3px;border-radius:2px;background:rgba(255,255,255,0.16)}
+.saa-dots > .is-done{background:var(--blue)}
+.saa-dots > .is-current{width:20px;background:var(--blue-pale);box-shadow:0 0 0 3px rgba(91,118,255,0.24)}
+
+@media (max-width:640px){
+  .saa-card{padding:var(--sp-4) var(--sp-3);border-radius:16px}
+  .saa-header{padding:var(--sp-3) 0}
+  .saa-brand span{font-size:10px}
+}
+
+
+/* ==========================================================================
+   Site: Peer Exchange · Check Before You Use
+   Round 2: one-screen slide deck. Fixed 100dvh column:
+   header chrome -> .stage (one section, never scrolls) -> .deck-foot (progress + Back/Next)
+   ========================================================================== */
+html,body{height:100%;overflow:hidden;}
+body{min-height:0;}
+.app{
+  height:100vh;height:100dvh;max-width:720px;margin:0 auto;
+  padding:0 16px env(safe-area-inset-bottom);
+  display:flex;flex-direction:column;
+}
+.app > .saa-header{flex:none;padding:14px 0 10px;}
+
+/* slide area */
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;padding:4px 0 12px;}
+section{
+  display:none;margin:auto 0;width:100%;
+  background:var(--glass);border:1px solid var(--line);border-radius:var(--radius-card);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:28px 32px;
+}
+section.active{display:block;animation:fade .22s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+/* footer bar */
+.deck-foot{flex:none;padding:10px 0 16px;border-top:1px solid var(--line-soft);}
+.progress{display:flex;gap:6px;margin:0 0 10px;}
+.progress span{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.16);transition:background .15s ease;}
+.progress span.is-done{background:var(--blue);}
+.progress span.active{background:var(--blue-pale);box-shadow:0 0 0 2px rgba(91,118,255,0.24);}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.counter{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums;}
+.foot-row [hidden]{display:none;}
+
+/* cover */
+.slide-cover .saa-eyebrow{margin:0 0 6px;}
+.meta{font-size:12px;letter-spacing:.08em;color:var(--dim);font-weight:500;margin:0 0 20px 32px;}
+h1{font-size:clamp(28px,4.6vw,36px);font-weight:700;margin:0 0 14px;letter-spacing:-.01em;line-height:1.15;}
+.subtitle{font-size:16px;color:var(--text);margin:0 0 14px;max-width:56ch;}
+.slide-cover .note-line{margin:0 0 14px;}
+.pc-meta{font-size:12px;letter-spacing:.08em;color:var(--faint);margin:0;}
+
+h2{font-size:22px;font-weight:700;margin:0 0 12px;}
+.step-meta{font-size:12px;color:var(--blue-light);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:8px;}
+p{margin:0 0 14px;font-size:15px;color:var(--text);}
+
+/* how it works: numbered list with .saa-num markers */
+.numbered{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.numbered li{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--glass-2);border:1px solid var(--line);border-radius:16px;padding:14px 18px;
+}
+.numbered span:not(.n){font-size:15px;color:var(--text);padding-top:3px;}
+
+.note-line{font-size:14px;color:var(--dim);margin:0;}
+
+/* form elements */
+label{display:block;font-weight:700;font-size:13px;margin:14px 0 6px;color:#EDEFF7;}
+section > label:first-of-type{margin-top:0;}
+textarea{min-height:68px;height:68px;resize:none;display:block;}
+select{
+  cursor:pointer;margin:0;appearance:none;-webkit-appearance:none;padding-right:40px;
+  background:rgba(255,255,255,0.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238FA0FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/16px;
+  min-height:46px;
+}
+select option{background:#0E1A4F;color:var(--text-2);}
+.radio-row{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 16px;}
+.radio-row label{
+  display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;margin:0;cursor:pointer;color:var(--text-2);
+  background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-height:44px;
+}
+.radio-row label:has(input:checked){background:rgba(91,118,255,0.22);border-color:var(--blue);color:#fff;}
+.radio-row input{width:auto;margin:0;accent-color:var(--blue);}
+
+/* artifact "posts" + sentence frames = glass cards */
+blockquote{
+  margin:0 0 12px;padding:16px 20px;
+  background:var(--glass-2);border:1px solid var(--line);border-radius:16px;
+}
+blockquote:last-child{margin-bottom:0;}
+blockquote.owner{background:rgba(91,118,255,0.08);border-color:rgba(91,118,255,0.28);}
+blockquote p{margin:0;font-size:15px;color:var(--ivory);}
+blockquote .label{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.14em;font-weight:600;margin-bottom:6px;}
+blockquote.owner .label{color:var(--blue-pale);}
+/* the note itself reads larger on its own slide */
+#artifactAI p,#artifactFixed p{font-size:17px;line-height:1.65;}
+section[data-step="disagree"] .note-line{margin-bottom:12px;}
+.mark{
+  color:var(--ivory);font-weight:600;
+  background:rgba(91,118,255,0.18);border-radius:4px;padding:0 3px;
+  text-decoration:underline;text-decoration-color:var(--blue-light);text-decoration-thickness:1.5px;text-underline-offset:3px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+
+/* checklist (label wraps the text so the whole row is tappable) */
+.checklist{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:8px;}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;padding:11px 16px;
+  background:var(--glass-2);border:1px solid var(--line);border-radius:12px;
+}
+.checklist li:has(input:checked){border-color:var(--blue-line);background:rgba(91,118,255,0.07);}
+.checklist input{width:18px;height:18px;accent-color:var(--blue);flex-shrink:0;margin:3px 0 0;}
+.checklist label{margin:0;font-size:15px;font-weight:400;color:var(--text);cursor:pointer;line-height:1.5;}
+
+/* timer: one inset block so digits, phase, instruction and controls read together */
+.timer-box{
+  background:var(--glass-2);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:0 0 16px;
+}
+.timer-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 6px;}
+.timer-digits{font-family:var(--font);font-variant-numeric:tabular-nums;font-size:40px;font-weight:700;color:var(--ivory);line-height:1;letter-spacing:-.01em;}
+.timer-phase{font-size:12px;color:var(--blue-pale);font-weight:600;text-transform:uppercase;letter-spacing:.14em;}
+.timer-instruction{font-size:14px;color:var(--muted);margin:0 0 10px;min-height:2.9em;}
+.timer-ctrls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+label.after-timer{margin-top:0;}
+
+/* buttons */
+/* primary = amber pill; one per slide */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;
+  font-family:var(--font);font-weight:700;font-size:14px;color:var(--amber-ink);
+  background:linear-gradient(135deg,var(--amber-2),var(--amber));box-shadow:var(--shadow-amber);
+  border:none;border-radius:var(--radius-pill);padding:12px 24px;cursor:pointer;
+}
+.btn:hover{filter:brightness(1.05);}
+/* ghost = glass secondary (the timer control) */
+.btn.ghost{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:#DADEEE;
+  box-shadow:none;font-size:13px;font-weight:600;padding:11px 20px;min-width:96px;
+}
+.btn.ghost:hover{background:rgba(255,255,255,0.09);filter:none;}
+.btn:disabled{opacity:.4;cursor:default;box-shadow:none;}
+.back-link{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-family:var(--font);font-size:13px;font-weight:700;color:var(--blue-light);
+  background:none;border:none;padding:8px 6px;cursor:pointer;text-decoration:none;
+}
+.back-link:hover{color:var(--blue-pale);text-decoration:underline;text-underline-offset:3px;}
+
+.reminder{font-size:14px;color:var(--muted);margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line-soft);}
+.reminder b{color:var(--ivory);}
+
+@media (max-height:760px) and (min-width:641px){
+  section{padding:24px 30px;}
+}
+
+@media (max-width:640px){
+  .app > .saa-header{padding:10px 0 8px;}
+  section{padding:20px 18px;border-radius:16px;}
+  h2{font-size:20px;}
+  .meta{margin-left:0;}
+  .numbered li{padding:12px 14px;}
+  .radio-row label{width:100%;}
+  .timer-digits{font-size:34px;}
+  .deck-foot{padding:8px 0 12px;}
+  #artifactAI p,#artifactFixed p{font-size:16px;}
+}
+@media (max-width:479px){
+  .saa-header .saa-icon-btn{display:none;}
+}

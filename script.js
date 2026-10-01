@@ -1,12 +1,37 @@
-var steps = ['intro','roles','exchange','review','feedback','revise','reflect','evidence'];
+/* ================= SLIDES =================
+   One <section> visible at a time inside a fixed 100dvh frame. The footer
+   holds the progress bar, the "n / N" counter and Back/Next. A section can
+   rename Next with data-next; the section marked data-last hides Next (its
+   own Download button is the primary) and shows Start over instead. */
+var sections = [];
+var steps = [];
+var current = 0;
+
+function showIndex(i){
+  current = Math.max(0, Math.min(sections.length - 1, i));
+  sections.forEach(function(s, k){ s.classList.toggle("active", k === current); });
+  var sec = sections[current];
+  var step = steps[current];
+  if(step === "exchange-ai" || step === "exchange-fixed") renderArtifact();
+  var isLast = sec.hasAttribute("data-last");
+  document.getElementById("counter").textContent = (current + 1) + " / " + sections.length;
+  document.getElementById("navBack").style.visibility = current === 0 ? "hidden" : "visible";
+  var next = document.getElementById("navNext");
+  next.hidden = isLast;
+  next.textContent = sec.getAttribute("data-next") || "Next";
+  document.getElementById("navRestart").hidden = !isLast;
+  document.querySelectorAll("#progress span").forEach(function(d, k){
+    d.classList.toggle("active", k === current);
+    d.classList.toggle("is-done", k < current);
+  });
+}
 
 function goTo(step){
-  document.querySelectorAll('section').forEach(function(s){
-    s.classList.toggle('active', s.getAttribute('data-step') === step);
-  });
-  if(step === 'exchange') renderArtifact();
-  window.scrollTo({top:0, behavior:'smooth'});
+  var i = steps.indexOf(step);
+  if(i > -1) showIndex(i);
 }
+function goNext(){ showIndex(current + 1); }
+function goBack(){ showIndex(current - 1); }
 
 /* ================= ARTIFACT ================= */
 var artifactData = {
@@ -21,11 +46,12 @@ var artifactData = {
 };
 
 function renderArtifact(){
-  var lane = document.getElementById('laneSelect').value;
-  var d = artifactData[lane];
-  document.getElementById('artifactBlock').innerHTML =
-    '<blockquote><div class="label">AI version</div><p>'+d.ai+'</p></blockquote>'+
-    '<blockquote class="owner"><div class="label">Owner\u2019s corrected version</div><p>'+d.fixed+'</p></blockquote>';
+  var select = document.getElementById("laneSelect");
+  var d = artifactData[select.value];
+  var laneName = select.options[select.selectedIndex].text;
+  document.querySelector("#artifactAI p").innerHTML = d.ai;
+  document.querySelector("#artifactFixed p").innerHTML = d.fixed;
+  document.querySelectorAll(".lane-name").forEach(function(el){ el.textContent = laneName; });
 }
 
 /* ================= TIMER ================= */
@@ -91,7 +117,7 @@ function downloadAnswers(){
   lines.push('One suggested change: ' + (document.getElementById('fChange').value || '(not filled)'));
   lines.push('One change I made after peer review: ' + (document.getElementById('fChanged').value || '(not filled)'));
   lines.push('Reflection: ' + (document.getElementById('fReflect').value || '(not filled)'));
-  var blob = new Blob([lines.join('\\n')], {type:'text/plain'});
+  var blob = new Blob([lines.join('\n')], {type:'text/plain'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;
@@ -111,9 +137,15 @@ function startOver(){
   timerRunning = false;
   document.getElementById('timerBtn').textContent = 'Start';
   updateTimerDisplay();
-  goTo('intro');
+  goTo('cover');
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("DOMContentLoaded", function(){
+  sections = Array.prototype.slice.call(document.querySelectorAll(".stage > section"));
+  steps = sections.map(function(s){ return s.getAttribute("data-step"); });
+  var progress = document.getElementById("progress");
+  sections.forEach(function(){ progress.appendChild(document.createElement("span")); });
+  renderArtifact();
   updateTimerDisplay();
+  showIndex(0);
 });
