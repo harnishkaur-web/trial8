@@ -339,3 +339,100 @@ label.after-timer{margin-top:0;}
 @media (max-width:479px){
   .saa-header .saa-icon-btn{display:none;}
 }
+
+/* ESL upgrade (game-specific) */
+.slide .do{display:block;margin:10px 0;padding:12px 16px;border-radius:14px;background:rgba(91,118,255,.16);border:1px solid rgba(91,118,255,.6);color:#F6F4EF;font-weight:600;line-height:1.45;text-align:left;font-size:inherit}
+.slide .do b{color:#8FA0FF;font-weight:700;margin-right:.3em}
+.fb-fields > label:first-of-type{margin-top:0;}
+.slide .saa-work > .radio-row{margin:0;}
+.slide .saa-work > .btn{align-self:flex-start;}
+
+/* UI consistency (Oct 2026) */
+/* 1. standard inner padding: content sits inside the glass card, never on its border */
+html.saa-skin .stage > section.slide{
+  padding:calc(clamp(14px,3vh,32px) / var(--zz,1)) calc(clamp(20px,3.5vw,56px) / var(--zz,1)) !important;
+  box-sizing:border-box !important;
+}
+@media (max-width:640px){
+  html.saa-skin .stage > section.slide{padding:16px 16px !important;}
+}
+/* 2. shared small blue letter-spaced eyebrow */
+html.saa-skin .stage > .slide p.step-meta.step-meta.step-meta.step-meta.step-meta.step-meta.step-meta.step-meta.step-meta.step-meta{
+  font-size:calc(11.5px / var(--zz,1)) !important;font-weight:600 !important;letter-spacing:.22em !important;text-transform:uppercase !important;
+  color:#8FA0FF !important;margin:0 0 calc(6px / var(--zz,1)) !important;padding:0 !important;background:none !important;line-height:1.4 !important;
+}
+html.saa-skin .stage > .slide p.step-meta .lane-name{color:inherit !important;font:inherit !important;letter-spacing:inherit !important;}
+.slide-cover .meta{margin-left:0 !important;}
+/* 3. in-card Download button is blue; amber is only the footer's main button */
+html.saa-skin .stage > .slide .btn:not(.ghost){
+  background:#5B76FF !important;color:#fff !important;box-shadow:0 3px 0 rgba(0,0,0,.3) !important;
+}
+
+/* Game 17 designer assets (Oct 2026) */
+.g17-fig{margin:0;padding:0}
+.g17-fig img{display:block;max-width:100%;height:auto}
+.g17-ic{width:22px;height:22px;flex:0 0 auto;display:block}
+/* screen 1: two buddies with one checked note (right half of the cover) */
+.g17-cover{display:flex;justify-content:center}
+.g17-cover img{width:auto;max-height:calc(46vh / var(--z,1));border-radius:16px;border:1px solid var(--line)}
+.saa-start .g17-start-hero{display:block;width:auto;height:clamp(80px,24vh,300px);max-width:80vw;object-fit:contain;border-radius:16px}
+@media (max-height:640px){.saa-start .g17-start-hero{height:clamp(70px,19vh,200px)}}
+/* screen 2: step icons inside the reorder chips */
+.saa-kit .saa-steps li .g17-ic{margin-right:2px}
+/* screen 3: Owner / Reviewer badges in the drop-box headers */
+.saa-bin .saa-bin-h{display:flex;align-items:center;gap:8px}
+.saa-bin .saa-bin-h::before{content:"";width:22px;height:22px;flex:0 0 auto;background:no-repeat center/contain}
+.saa-bin[data-bin="a"] .saa-bin-h::before{background-image:url("assets/icons/icon-role-owner.webp")}
+.saa-bin[data-bin="b"] .saa-bin-h::before{background-image:url("assets/icons/icon-role-reviewer.webp")}
+/* screen 4: setting icon beside the dropdown */
+.g17-lane{display:flex;align-items:center;gap:12px}
+.g17-lane select{flex:1 1 auto;min-width:0}
+.g17-lane-ic{width:32px;height:32px;flex:0 0 auto}
+/* screen 5: the ITI prompt as a user bubble, then the AI reply */
+.g17-prompt{display:block;width:fit-content;max-width:85%;margin:0 0 10px auto !important;padding:7px 14px;border-radius:14px 14px 4px 14px;
+  background:rgba(91,118,255,0.22);border:1px solid rgba(91,118,255,0.45);font-size:14px !important;line-height:1.4 !important;color:var(--ivory)}
+.g17-prompt[hidden]{display:none}
+/* category tags on the marks: only after the question on screen 5 is answered */
+.g17-tag{display:none;width:15px;height:15px;vertical-align:-2px;margin-right:3px}
+.slide:has(.saa-kit.is-done) .g17-tag{display:inline-block}
+/* screen 6: visit-register excerpt (ITI), shown after the question is answered */
+.g17-register{display:none}
+.slide:has(.saa-kit.is-done) .g17-register:not([hidden]){display:block}
+.g17-register{margin-top:calc(14px / var(--z,1)) !important}
+.g17-register svg{display:block;width:auto;height:calc(16vh / var(--z,1));max-width:100%}
+.slide:has(.saa-kit.is-done) .g17-supported{box-shadow:0 0 0 1.5px var(--blue-light)}
+/* screens 7 and 12: icons on the checklist rows */
+.checklist label:has(.g17-ic){display:flex;gap:10px;align-items:flex-start}
+.checklist label .g17-ic{width:20px;height:20px;margin-top:2px}
+/* screen 8: strength / risk / suggestion icons on the field labels */
+.fb-fields label:has(.g17-ic){display:flex;align-items:center;gap:8px}
+.fb-fields label .g17-ic{width:20px;height:20px}
+/* screen 9: Helpful vs Not helpful scene under the left text */
+.g17-respect img{width:auto;max-height:calc(20vh / var(--z,1));border-radius:12px;border:1px solid var(--line)}
+/* screen 11: role-swap loop */
+.g17-swap{margin:0 0 12px}
+.g17-swap img{width:auto;max-height:calc(22vh / var(--z,1));border-radius:12px;border:1px solid var(--line)}
+/* screen 13: never-share icons under the privacy line */
+.g17-never{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 0}
+.g17-never img{width:26px;height:26px;opacity:.9}
+@media (max-width:640px){
+  .g17-cover img{max-height:30vh}
+  .g17-respect img,.g17-swap img{max-height:130px}
+}
+@media (max-height:640px) and (min-width:641px){
+  .g17-respect img{max-height:calc(16vh / var(--z,1))}
+  .g17-swap img{max-height:calc(17vh / var(--z,1))}
+}
+/* cover: the staff mapping line stays small now that the cover is split */
+html.saa-skin .slide-cover .saa-lead p.pc-meta.pc-meta.pc-meta.pc-meta.pc-meta.pc-meta.pc-meta.pc-meta.pc-meta{font-size:12px !important;font-weight:400 !important;color:var(--dim) !important;letter-spacing:.04em;margin:4px 0 0 !important}
+@media (min-height:641px){
+  .g17-respect img{max-height:calc(24vh / var(--z,1))}
+  .g17-swap img{max-height:calc(27vh / var(--z,1))}
+}
+.saa-start .g17-start-hero{margin-top:10px}
+
+/* Fix pass (Oct 2026): message when Next is locked on a typed-answer screen */
+.g17-gate{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:rgba(255,140,140,.12);border:1px solid rgba(255,140,140,.55);color:#ffb3b3;font-weight:600;font-size:15px;line-height:1.4}
+.g17-gate[hidden]{display:none}
+.g17-need{border-color:#ff8c8c !important;box-shadow:0 0 0 2px rgba(255,140,140,.35) !important}
+#navNext.g17-locked{opacity:.45 !important;filter:saturate(.35) !important;box-shadow:none !important;cursor:not-allowed !important}

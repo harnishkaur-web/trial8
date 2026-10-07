@@ -8,170 +8,228 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="saa-upgrade.css">
+<link rel="stylesheet" href="saa-kit.css">
 </head>
 <body>
 <div class="app">
 
   <header class="saa-header">
     <div class="saa-brand">
-      <img src="assets/logo-mark.png" alt="">
+      <img src="assets/logo-mark.webp" alt="">
       <span>SWIFT AI ACADEMY</span>
-    </div>
-    <div class="saa-header-actions">
-      <button type="button" class="saa-icon-btn" aria-label="Course outline">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
-      </button>
-      <button type="button" class="saa-ghost-pill" aria-label="Close activity">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        Close
-      </button>
     </div>
   </header>
 
   <main class="stage">
 
     <!-- SLIDE 1: cover (old page head + intro note) -->
-    <section class="active slide-cover" data-step="cover">
-      <p class="saa-eyebrow">Community Activity · 0.25 hrs · Practical · Gates the unit</p>
+    <section class="slide active slide-cover" data-step="cover">
+      <p class="saa-eyebrow">Activity with a buddy · About 15 minutes</p>
       <div class="meta">AAI-E-MC1-S03-COMM01</div>
       <h1>Peer Exchange — Check Before You Use</h1>
-      <p class="subtitle">Exchange one checked AI note with a buddy. Review each other's marking, give feedback, and revise — then swap and do it again.</p>
-      <p class="note-line">You will need a buddy and one checked note between you. The whole activity takes about 15 minutes.</p>
+      <p class="subtitle">You and a buddy exchange one checked AI note. You review each other's marking, give feedback, revise and then swap roles.</p>
+      <p class="note-line">You need a buddy and one checked note between you. The whole activity takes about 15 minutes.</p>
       <p class="pc-meta">Swift AI Academy · PC 4.1–4.5 · PC 5.1–5.4 · English</p>
+      <figure class="g17-fig g17-cover"><img src="assets/scene-peer-checked-note-720.webp" width="720" height="480" alt="An ITI trainee and a college student sit on a bench and look at one checked note on a phone together. One points at an underlined line."></figure>
     </section>
 
     <!-- SLIDE 2: how this works (old intro) -->
-    <section data-step="intro" data-next="Start">
-      <h2>How this works</h2>
-      <ul class="numbered">
-        <li><span class="n saa-num">1</span><span>Exchange one checked note with your buddy — the AI version and your corrected version, side by side.</span></li>
-        <li><span class="n saa-num">2</span><span>Review each other's marking against a short rubric. Give one strength, one risk, one suggestion.</span></li>
-        <li><span class="n saa-num">3</span><span>Revise your note, then swap roles and run it again.</span></li>
-      </ul>
+    <section class="slide" data-step="intro" data-next="Start">
+      <p class="step-meta">How it works</p>
+      <h2>This activity has three steps.</h2>
+      <p>You show the AI version and your corrected version side by side. Your buddy gives one strength, one risk and one suggestion.</p>
+      <p class="do"><b>Your task.</b> Put the three steps in the right order.</p>
+      <div class="saa-kit" data-kit="order" data-required>
+        <ol class="saa-steps">
+          <li data-n="1"><img class="g17-ic" src="assets/icons/icon-exchange.webp" alt="" aria-hidden="true">Exchange one checked note with your buddy.</li>
+          <li data-n="2"><img class="g17-ic" src="assets/icons/icon-rubric.webp" alt="" aria-hidden="true">Review each other's marking with a short rubric.</li>
+          <li data-n="3"><img class="g17-ic" src="assets/icons/icon-revise.webp" alt="" aria-hidden="true">Revise your note, then swap roles and do it again.</li>
+        </ol>
+        <p class="saa-k-why" data-right="Yes. You exchange, then review, then revise and swap."></p>
+      </div>
     </section>
 
     <!-- SLIDE 3: step 1, roles -->
-    <section data-step="roles">
+    <section class="slide" data-step="roles">
       <p class="step-meta">Step 1</p>
-      <h2>Who goes first?</h2>
-      <p>Decide with your buddy who plays Owner first. You'll both play both roles before you finish.</p>
+      <h2>Who is the Owner first?</h2>
+      <p>The Owner shares the note. The Reviewer checks it with the rubric, and you swap for round 2.</p>
+      <p class="do"><b>Your task.</b> Choose who is the Owner first. Then sort each job into the right role.</p>
       <div class="radio-row">
-        <label><input type="radio" name="firstOwner" value="me" checked> I'm the Owner first</label>
+        <label><input type="radio" name="firstOwner" value="me" checked> I am the Owner first</label>
         <label><input type="radio" name="firstOwner" value="buddy"> My buddy is the Owner first</label>
       </div>
-      <p class="note-line">Owner shares the note. Reviewer checks it against the rubric. You swap for round 2.</p>
+      <div class="saa-kit" data-kit="sort" data-style="deck" data-required data-shuffle data-done-text="All sorted. You both play both roles before you finish.">
+        <div class="saa-bins">
+          <div class="saa-bin" data-bin="a" data-label="Owner"></div>
+          <div class="saa-bin" data-bin="b" data-label="Reviewer"></div>
+        </div>
+        <div class="saa-pool">
+          <button class="saa-chip" type="button" data-bin="a" data-why="Yes. The Owner shares the checked note." data-hint="Not quite. Who brings the note to the exchange?">Share the note</button>
+          <button class="saa-chip" type="button" data-bin="a" data-why="Yes. The Owner revises the note after feedback." data-hint="Not quite. Whose note gets the change?">Revise the note</button>
+          <button class="saa-chip" type="button" data-bin="b" data-why="Yes. The Reviewer checks the note with the rubric." data-hint="Not quite. Who checks somebody else's note?">Check with the rubric</button>
+          <button class="saa-chip" type="button" data-bin="b" data-why="Yes. The Reviewer gives the feedback." data-hint="Not quite. Who gives the feedback?">Give a strength and a risk</button>
+        </div>
+        <p class="saa-k-why"></p>
+      </div>
     </section>
 
     <!-- SLIDE 4: step 2, pick the setting -->
-    <section data-step="exchange">
+    <section class="slide" data-step="exchange">
       <p class="step-meta">Step 2</p>
-      <h2>Exchange the note</h2>
-      <p>Pick the setting closer to your own — ITI or higher education.</p>
+      <h2>Which setting is closer to your own?</h2>
+      <p>You can use an ITI note or a higher education note. Each setting has one AI note and one corrected note.</p>
+      <p class="do"><b>Your task.</b> Choose your setting from the list.</p>
+      <div class="g17-lane">
+      <img class="g17-lane-ic" id="g17LaneIcon" src="assets/icons/icon-lane-iti.webp" alt="" aria-hidden="true">
       <select id="laneSelect" onchange="renderArtifact()" aria-label="Setting">
         <option value="iti">ITI · Industrial visit note</option>
         <option value="higher">Higher education · Campus survey summary</option>
       </select>
+      </div>
     </section>
 
     <!-- SLIDE 5: step 2, AI version (old side-by-side, part 1) -->
-    <section data-step="exchange-ai">
+    <section class="slide" data-step="exchange-ai">
       <p class="step-meta">Step 2 · <span class="lane-name">ITI · Industrial visit note</span></p>
-      <h2>AI version</h2>
-      <blockquote id="artifactAI"><div class="label">AI version</div><p></p></blockquote>
+      <h2>This is the note that the AI tool wrote.</h2>
+      <p>The Owner marked some parts of the note. Read the note and look at the marked parts.</p>
+      <p class="do"><b>Your task.</b> Read the note, then answer the question.</p>
+      <blockquote id="artifactAI"><div class="label">AI version</div><p class="g17-prompt" id="g17Prompt" hidden></p><p></p></blockquote>
+      <div class="saa-kit" data-kit="quick" data-required>
+        <p class="saa-q">Why are these parts of the note marked?</p>
+        <div class="saa-k-opts">
+          <button class="saa-k-opt" type="button" data-ok data-why="Yes. Each marked part is a fact, figure, date, name or source to check.">They are parts that you can check against a record.</button>
+          <button class="saa-k-opt" type="button" data-why="Not quite. A mark means the part needs a check. It does not mean the part is right.">They are the parts that the AI tool got right.</button>
+        </div>
+        <p class="saa-k-why"></p>
+      </div>
     </section>
 
     <!-- SLIDE 6: step 2, owner's corrected version (old side-by-side, part 2) -->
-    <section data-step="exchange-fixed">
+    <section class="slide" data-step="exchange-fixed">
       <p class="step-meta">Step 2 · <span class="lane-name">ITI · Industrial visit note</span></p>
-      <h2>Owner's corrected version</h2>
+      <h2>This is the Owner's corrected note.</h2>
+      <p>Compare it with the AI note on the last screen. Look at what changed in each marked part.</p>
+      <p class="do"><b>Your task.</b> Read the note, then answer the question.</p>
       <blockquote class="owner" id="artifactFixed"><div class="label">Owner’s corrected version</div><p></p></blockquote>
+      <figure class="g17-fig g17-register g17-lead-end" id="g17Register" hidden><svg role="img" aria-label="Visit register, made-up record excerpt: Trainees present: 32." viewBox="26 20 382 180" xmlns="http://www.w3.org/2000/svg"><rect x="27" y="21" width="380" height="178" rx="16" fill="#10173A" stroke="#252E5C" stroke-width="1.8"/><text x="50" y="65" font-family="Instrument Sans, sans-serif" font-size="25" font-weight="600" fill="#F6F4EF">Visit register</text><text x="50" y="103" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="600" fill="#8FA0FF">MADE-UP RECORD · EXCERPT</text><text x="55" y="166" font-family="Instrument Sans, sans-serif" font-size="24" font-weight="400" fill="#F6F4EF">Trainees present:</text><text x="316" y="166" font-family="Instrument Sans, sans-serif" font-size="28" font-weight="600" fill="#8FA0FF">32</text><ellipse cx="337" cy="155" rx="38" ry="20" fill="none" stroke="#8FA0FF" stroke-width="3"/></svg></figure>
+      <div class="saa-kit" data-kit="quick" data-required>
+        <p class="saa-q">What did the Owner do with the parts that were wrong or not confirmed?</p>
+        <div class="saa-k-opts">
+          <button class="saa-k-opt" type="button" data-ok data-why="Yes. The Owner used a record, or qualified or removed the part.">The Owner corrected, qualified or removed them.</button>
+          <button class="saa-k-opt" type="button" data-why="Not quite. Look again. A sure tone is not proof, so the Owner changed them.">The Owner kept them because the AI tool sounded sure.</button>
+        </div>
+        <p class="saa-k-why"></p>
+      </div>
     </section>
 
     <!-- SLIDE 7: step 3, rubric -->
-    <section data-step="review">
+    <section class="slide" data-step="review">
       <p class="step-meta">Step 3</p>
-      <h2>Review against the rubric</h2>
-      <p>As Reviewer, check off what you actually see in your buddy's note.</p>
+      <h2>Does your buddy's note meet the rubric?</h2>
+      <p>You are the Reviewer now. Tick only what you really see in your buddy's note.</p>
+      <p class="do"><b>Your task.</b> Tick each rubric point that your buddy's note meets.</p>
       <ul class="checklist">
-        <li><input type="checkbox" id="rb1"><label for="rb1">Every fact, figure, date, name and source in the AI draft is marked.</label></li>
-        <li><input type="checkbox" id="rb2"><label for="rb2">Each correction is supported by a record, clearly qualified, or removed — not guessed.</label></li>
-        <li><input type="checkbox" id="rb3"><label for="rb3">The corrected version reads clearly, with no confusing leftover wording.</label></li>
-        <li><input type="checkbox" id="rb4"><label for="rb4">At least one genuine change happened because of this review.</label></li>
+        <li><input type="checkbox" id="rb1"><label for="rb1"><img class="g17-ic" src="assets/icons/icon-mark.webp" alt="" aria-hidden="true">Every fact, figure, date, name and source in the AI note is marked.</label></li>
+        <li><input type="checkbox" id="rb2"><label for="rb2"><img class="g17-ic" src="assets/icons/icon-source.webp" alt="" aria-hidden="true">Each correction comes from a record, is clearly qualified, or is removed. Nothing is guessed.</label></li>
+        <li><input type="checkbox" id="rb3"><label for="rb3"><img class="g17-ic" src="assets/icons/icon-clear.webp" alt="" aria-hidden="true">The corrected version is clear. No confusing old wording is left.</label></li>
+        <li><input type="checkbox" id="rb4"><label for="rb4"><img class="g17-ic" src="assets/icons/icon-revise.webp" alt="" aria-hidden="true">At least one real change happened because of this review.</label></li>
       </ul>
     </section>
 
     <!-- SLIDE 8: step 4, feedback fields -->
-    <section data-step="feedback">
+    <section class="slide" data-step="feedback">
       <p class="step-meta">Step 4</p>
-      <h2>Give feedback</h2>
-      <label for="fStrength">One strength (with evidence)</label>
-      <textarea id="fStrength" placeholder="e.g., The date was checked against the visit register and corrected."></textarea>
+      <h2>Now you give your buddy feedback.</h2>
+      <p>A strength says what worked, with evidence. A risk says what could still go wrong.</p>
+      <p class="do"><b>Your task.</b> Type one strength, one risk and one suggested change.</p>
+      <div class="fb-fields">
+        <label for="fStrength"><img class="g17-ic" src="assets/icons/icon-strength.webp" alt="" aria-hidden="true">One strength, with evidence</label>
+        <textarea id="fStrength" placeholder="For example, the date was checked against the visit register and corrected."></textarea>
 
-      <label for="fRisk">One risk</label>
-      <textarea id="fRisk" placeholder="e.g., The source line was corrected, but the wording is still a little unclear."></textarea>
+        <label for="fRisk"><img class="g17-ic" src="assets/icons/icon-risk.webp" alt="" aria-hidden="true">One risk</label>
+        <textarea id="fRisk" placeholder="For example, the source line was corrected, but the wording is still a little unclear."></textarea>
 
-      <label for="fChange">One suggested change</label>
-      <textarea id="fChange" placeholder="e.g., Try qualifying that line instead of removing it completely."></textarea>
+        <label for="fChange"><img class="g17-ic" src="assets/icons/icon-suggest.webp" alt="" aria-hidden="true">One suggested change</label>
+        <textarea id="fChange" placeholder="For example, try to qualify that line instead of removing it."></textarea>
+      </div>
     </section>
 
     <!-- SLIDE 9: step 4, sentence frames -->
-    <section data-step="disagree">
+    <section class="slide" data-step="disagree">
       <p class="step-meta">Step 4</p>
-      <h2>Sentence frames</h2>
-      <p class="note-line">If you disagree, say it plainly:</p>
-      <blockquote><div class="label">Reviewer</div><p>"I see this differently because ___."</p></blockquote>
-      <blockquote class="owner"><div class="label">Owner</div><p>"That's fair, I'll recheck it." — or — "I kept this because ___."</p></blockquote>
+      <h2>You can disagree and still be respectful.</h2>
+      <p>If you disagree, say it plainly and give a reason. Talk about the note, not the person.</p>
+      <p class="do"><b>Your task.</b> Stamp each sentence Helpful or Not helpful.</p>
+      <figure class="g17-fig g17-lead-fig g17-respect"><img src="assets/scene-respectful-review-720.webp" width="720" height="360" alt="Two pictures side by side. Helpful: a trainee points at the note while his partner listens. Not helpful: the trainee points at his partner, who looks upset."></figure>
+      <div class="saa-kit" data-kit="stamp" data-required data-stamps="Helpful|Not helpful">
+        <div class="saa-rows">
+          <div class="saa-row" data-ans="0" data-why="Yes. The Reviewer says it plainly and gives a reason." data-hint="Not quite. Does the Reviewer give a reason?">Reviewer: "I see this differently because the register shows another number."</div>
+          <div class="saa-row" data-ans="1" data-why="Yes. It talks about the person and gives no reason." data-hint="Not quite. Is this about the note or about the person?">Reviewer: "This is wrong. You always guess."</div>
+          <div class="saa-row" data-ans="0" data-why="Yes. The Owner listens and agrees to check it again." data-hint="Not quite. Does the Owner listen to the feedback?">Owner: "That is fair. I will check it again."</div>
+          <div class="saa-row" data-ans="0" data-why="Yes. The Owner keeps the line and says why." data-hint="Not quite. Does the Owner give a reason?">Owner: "I kept this because the visit register confirms it."</div>
+        </div>
+      </div>
     </section>
 
     <!-- SLIDE 10: step 5, revise (timer) -->
-    <section data-step="revise">
+    <section class="slide" data-step="revise">
       <p class="step-meta">Step 5</p>
-      <h2>Revise, on the clock</h2>
-      <p>Owner revises the note using the feedback just given. Run the timer for this phase, and the ones before it, if you haven't yet.</p>
+      <h2>The Owner revises the note on the clock.</h2>
+      <p>The Owner uses the feedback from Step 4. Run the timer for this phase, and for the earlier phases if you did not run them yet.</p>
+      <p class="do"><b>Your task.</b> You can start the timer. Then type one change that you made.</p>
 
       <div class="timer-box">
         <div class="timer-line">
           <span class="timer-digits" id="timerDigits">02:00</span>
           <span class="timer-phase" id="timerPhaseLabel">Revision</span>
         </div>
-        <p class="timer-instruction" id="timerInstruction">Owner makes at least one change based on the feedback just received.</p>
+        <p class="timer-instruction" id="timerInstruction">The Owner makes at least one change based on the feedback.</p>
         <div class="timer-ctrls">
           <button class="btn ghost" onclick="toggleTimer()" id="timerBtn">Start</button>
-          <button class="back-link" onclick="nextPhase()">Skip to next phase</button>
+          <button class="back-link" id="timerSkip" onclick="nextPhase()">Skip to next phase</button>
         </div>
       </div>
 
       <label for="fChanged" class="after-timer">One change I made after peer review</label>
-      <input type="text" id="fChanged" placeholder="e.g., I qualified the attendance figure instead of stating it as fact.">
+      <input type="text" id="fChanged" placeholder="For example, I qualified the attendance figure instead of stating it as a fact.">
     </section>
 
     <!-- SLIDE 11: step 6, swap and reflect -->
-    <section data-step="reflect" data-next="Review &amp; finish">
+    <section class="slide" data-step="reflect" data-next="Review &amp; finish">
       <p class="step-meta">Step 6</p>
-      <h2>Swap and reflect</h2>
-      <p>Now swap roles — the Reviewer becomes the Owner — and run Steps 2 to 5 again for round 2.</p>
-      <label for="fReflect">What was different about receiving feedback, versus giving it?</label>
-      <textarea id="fReflect" placeholder="Write a line or two, in your own words."></textarea>
+      <h2>Now swap roles and do round 2.</h2>
+      <p>The Reviewer becomes the Owner. Do Steps 2 to 5 again with your new roles.</p>
+      <p class="do"><b>Your task.</b> Type how getting feedback felt different from giving it.</p>
+      <figure class="g17-fig g17-swap"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/role-swap-static.webp"><img src="assets/anim-role-swap.webp" width="600" height="300" alt="The Owner and Reviewer badges swap between You and your buddy."></picture></figure>
+      <label for="fReflect">How was getting feedback different from giving it?</label>
+      <textarea id="fReflect" placeholder="Write 1 or 2 sentences in your own words."></textarea>
     </section>
 
     <!-- SLIDE 12: evidence checklist -->
-    <section data-step="evidence">
-      <h2>Your evidence</h2>
-      <p>Check you have all of these, then download your answers.</p>
+    <section class="slide" data-step="evidence">
+      <p class="step-meta">Your evidence</p>
+      <h2>Do you have all four parts of your evidence?</h2>
+      <p>Check each part. Then you can download your answers.</p>
+      <p class="do"><b>Your task.</b> Tick each part that you have.</p>
       <ul class="checklist">
-        <li><input type="checkbox" id="ev1"><label for="ev1">The AI note and your corrected version, side by side.</label></li>
-        <li><input type="checkbox" id="ev2"><label for="ev2">One strength, one risk and one suggested change from your Reviewer.</label></li>
-        <li><input type="checkbox" id="ev3"><label for="ev3">The one change you made after peer review.</label></li>
-        <li><input type="checkbox" id="ev4"><label for="ev4">Round 2 completed, with roles swapped.</label></li>
+        <li><input type="checkbox" id="ev1"><label for="ev1"><img class="g17-ic" src="assets/icons/icon-exchange.webp" alt="" aria-hidden="true">You have the AI note and your corrected version, side by side.</label></li>
+        <li><input type="checkbox" id="ev2"><label for="ev2"><img class="g17-ic" src="assets/icons/icon-strength.webp" alt="" aria-hidden="true">You have one strength, one risk and one suggested change from your Reviewer.</label></li>
+        <li><input type="checkbox" id="ev3"><label for="ev3"><img class="g17-ic" src="assets/icons/icon-revise.webp" alt="" aria-hidden="true">You have the one change that you made after peer review.</label></li>
+        <li><input type="checkbox" id="ev4"><label for="ev4"><img class="g17-ic" src="assets/icons/icon-role-swap.webp" alt="" aria-hidden="true">You finished round 2 with roles swapped.</label></li>
       </ul>
     </section>
 
     <!-- SLIDE 13: download (old evidence step, lower half) -->
-    <section data-step="download" data-last>
-      <h2>Download your answers</h2>
+    <section class="slide" data-step="download" data-last>
+      <h2>Download your answers before you close.</h2>
+      <p class="do"><b>Your task.</b> Tap Download my answers to save your work.</p>
       <button class="btn" onclick="downloadAnswers()">Download my answers</button>
-      <p class="reminder"><b>This page does not save your work.</b> Download it, or show your facilitator, before you close this tab.</p>
-      <p class="reminder">Never type real names, marks, phone numbers, addresses, health information or ID numbers into an AI tool. Use made-up details for practice.</p>
+      <p class="reminder"><b>This page does not save your work.</b> Download it, or show it to your facilitator, before you close this tab.</p>
+      <p class="reminder g17-never-p">Never type real names, marks, phone numbers, addresses, health information or ID numbers into an AI tool. Use made-up details for practice.</p>
+      <div class="g17-never" aria-hidden="true"><img src="assets/icons/icon-private-name-never-share.webp" alt=""><img src="assets/icons/icon-private-marks-never-share.webp" alt=""><img src="assets/icons/icon-private-phone-never-share.webp" alt=""><img src="assets/icons/icon-private-address-never-share.webp" alt=""><img src="assets/icons/icon-private-health-never-share.webp" alt=""><img src="assets/icons/icon-private-id-never-share.webp" alt=""></div>
     </section>
 
   </main>
@@ -189,5 +247,7 @@
 </div>
 
 <script src="script.js"></script>
+<script src="saa-upgrade.js"></script>
+<script src="saa-kit.js"></script>
 </body>
 </html>
